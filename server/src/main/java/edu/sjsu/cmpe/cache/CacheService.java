@@ -18,9 +18,14 @@ import edu.sjsu.cmpe.cache.repository.InMemoryCache;
 public class CacheService extends Service<CacheServiceConfiguration> {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
+    private String server="";
 
     public static void main(String[] args) throws Exception {
-        new CacheService().run(args);
+        CacheService service = new CacheService();
+        String server = args[1];
+        service.server= server;
+        System.out.println("Server: "+service.server);
+        service.run(args);
     }
 
     @Override
